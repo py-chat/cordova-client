@@ -1,0 +1,134 @@
+body {
+	font-family: "Helvetica Neue", Helvetica, sans-serif;
+	// font-size: 31px;
+	// line-height: 73px;
+}
+
+// .btn {
+// 	font-size: 11pt;
+// }
+
+// .title {
+// 	font-size: 19pt;
+// }
+
+
+
+
+#content > .content.room-chat {
+	padding-left: 10px;
+	padding-right: 10px;
+	margin-top: 15px;
+	padding-bottom: 30px;
+}
+
+#content > .content.room-chat > .room-message {
+	// font-family: 'Trebuchet MS', sans;
+	// font-size: 14px;
+	> .num {
+		color: #3366ff;
+		font-weight: bold;
+		text-decoration: none;
+		cursor: pointer;
+		outline: none;
+	}
+	> .time {
+        color: #999;
+        font-size: smaller;
+    }
+
+    > .inner {
+        border-left: 2pt solid rgba(160, 209, 255, 0.27);
+      	padding-left: 4pt;
+      > .text {
+      	p {color: black;}
+        word-break: break-word;
+        .message_link {
+          color: #ff6600;
+          font-weight: bold;
+          cursor: pointer;
+          // .transition(color, .5s, ease);
+        }
+        .message_link:hover {
+          color: #A04204;
+        }
+
+        .message_link.reply_to_me {
+          color: red;
+        }
+
+        img.image_thumb {
+          border: 0px;
+        }
+
+        a.image_thumb {
+          display: block;
+        }
+
+        blockquote {
+          background: inherit;
+          padding: 0;
+          border: none;
+          margin: 0px;
+          font-size: inherit;
+          & p {
+            font-size: inherit;
+            line-height: 1.25;
+          }
+          color: #789922;
+        }
+
+
+        .spoiler {
+          background: #BBBBBB;
+          color: #BBBBBB;
+          &:hover {
+            color: black;
+          }
+        }
+        > p {
+          display: inline-block;
+          margin-bottom: 0px;
+        }
+    }
+      > .attachments {
+        margin-top: 10px;
+        > a.image_thumb {
+          display: inline-block;
+          height: 100px;
+          max-width: 150px;
+          overflow: hidden;
+          margin: 0 3px 3px 0;
+        }
+      }
+    }
+}
+
+#content > .content.rooms-list .badge.unread {
+	position: relative;
+	float: right;
+	top: 11px;
+	margin-right: 10px;
+}
+
+#content > .content.rooms-list .last_message {
+	.date {
+		float: right;
+		color: gray;
+		position: absolute;
+		top: 1px;
+		right: 5px;
+		font-size: 13px;
+	}
+}
+#content > .content.rooms-list li.unread {
+	background-color: beige;
+}
+
+#content > .content.hiden {
+  display: none;
+}
+
+header .hiden {
+	display: none;
+}

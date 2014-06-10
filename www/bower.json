@@ -1,0 +1,15 @@
+{
+  "name": "pychat-app",
+  "version": "0.0.1",
+  "dependencies": {
+    "jquery": "2",
+    "backbone": "latest",
+    "backbone-tastypie": "latest",
+    "ratchet": "2",
+    "snapjs": "latest",
+    "momentjs": "~2.6.0",
+    "less.js": "~1.7.0",
+    "socket.io-client": "~0.9.16",
+    "cordova": "~3.4.0"
+  }
+}

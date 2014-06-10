@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <meta name="format-detection" content="telephone=no" />
+        <!-- <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height, target-densitydpi=device-dpi" /> -->
+        <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, minimal-ui">
+        <link href="libs/snapjs/snap.css" rel="stylesheet">
+        <link href="libs/ratchet/dist/css/ratchet.css" rel="stylesheet">
+        <!-- <link href="libs/ratchet/dist/css/ratchet-theme-android.css" rel="stylesheet"> -->
+        <link rel="stylesheet/less" type="text/css" href="css/app.less">
+        <script type="text/javascript">less = { env: 'development' };</script>
+        <script src="js/less-1.3.3.min.js" type="text/javascript"></script>
+        <title>py-chat</title>
+        <script type="text/html" id="template-rooms-list">
+              <ul class="table-view">
+                <% _.each(rooms, function(room) { %>
+                  <li class="table-view-cell media <% if(room.unread) { %>unread<% } %>" data-room="<%=room.slug %>">
+                    <a class="navigate-right" href="#room/<%=room.slug %>">
+                      <div class="media-body"><%=room.title %>
+                          <p class="last_message">
+                          <% if(room.last_message) { %>
+                            <span class="num"><%-'# '+room.last_message.get('num') %></span>
+                            <span class="text"><%-$(room.last_message.get('html')).html().replace(/(<([^>]+)>)/ig, '') %></span>
+                            <span class="date"><%=moment(room.last_message.get('date')).format('H:mm:ss') %></span>
+                          <% } %>
+                          </p>
+                      </div>
+                    </a>
+                  </li>
+                <%}); %>
+              </ul>
+        </script>
+        <script type="text/html" id="template-room-chat-message">
+            <div id="message-<%=room.id %>-<%=msg.num %>" class="room-message">
+              <a class="num" tabindex="-1"><%=msg.num %></a>
+                <span class="time">&nbsp;<%=msg.date_human %></span>
+                <div class="inner">
+                  <div class="text">
+                    <%=msg.html %></span>
+                  </div>
+                </div>
+            </div>
+        </script>
+        <script type="text/html" id="template-room-post">
+              <div id="modal-room-post" class="modal" data-room="">
+                <header class="bar bar-nav">
+                  <a class="icon icon-close pull-right" href="#post-close"></a>
+                  <h1 class="title">Modal</h1>
+                </header>
+                <div class="content">
+                    <form class="content-padded">
+                      <textarea rows="5"></textarea>
+                      <button class="btn btn-positive btn-block">Submit</button>
+                    </form>
+                </div>
+              </div>
+        </script>
+    </head>
+    <body>
+<!--     <div class="snap-drawers">
+        <div class="snap-drawer snap-drawer-left active-drawer" id="left-drawer">
+            <ul class="list">
+              <h2>Snap.js</h2>
+              <li class="list-divider">Share</li>
+              <li>
+                <div class="demo-social">
+                  <iframe src="http://ghbtns.com/github-btn.html?user=jakiestfu&amp;repo=Snap.js&amp;type=watch&amp;count=true" allowtransparency="true" frameborder="0" scrolling="0" width="120" height="20"></iframe>
+                </div>
+              </li>
+              <li class="list-divider">Demos</li>
+              <li><a href="../default.html" data-ignore="push">Default</a></li>
+              <li><a href="../noDrag.html" data-ignore="push">No Drag</a></li>
+              <li><a href="../rightDisabled.html" data-ignore="push">Right Disabled</a></li>
+              <li><a href="../skinnyThreshold.html" data-ignore="push">Skinny Threshold</a></li>
+              <li><a href="../toggles.html" data-ignore="push">Toggles</a></li>
+              <li><a href="../classNames.html" data-ignore="push">Class Names</a></li>
+              <li><a href="../expand.html" data-ignore="push">Expanding</a></li>
+              <li><a href="../settings.html" data-ignore="push">Settings</a></li>
+              <li><a href="template.html" data-ignore="push">Ratchet</a></li>
+            </ul>
+        </div>
+    </div> -->
+    <div id="content" class="snap-content">
+        <!-- Make sure all your bars are the first things in your <body> -->
+
+        <header class="bar bar-nav">
+          <a class="btn pull-left hiden" href="#rooms">Rooms</a>
+          <a class="btn pull-right btn-primary" href="#post">Post</a>
+          <h1 class="title">Title</h1>
+        </header>
+
+        <!-- Wrap all non-bar HTML in the .content div (this is actually what scrolls) -->
+        <div class="content"></div>
+    </div>
+
+    <script src="libs/jquery/dist/jquery.js"></script>
+    <script src="libs/underscore/underscore.js"></script>
+    <script src="libs/backbone/backbone.js"></script>
+    <script src="libs/backbone-tastypie/backbone_tastypie/static/js/backbone-tastypie.js"></script>
+    <!-- <script type="text/javascript" src="js/cordova.js"></script> -->
+    <script src="libs/ratchet/dist/js/ratchet.js"></script>
+    <script src="libs/snapjs/snap.js"></script>
+    <script src="libs/momentjs/moment.js"></script>
+    <script src="libs/socket.io-client/dist/socket.io.js"></script>
+    <script src="js/app/app.js"></script>
+    <!-- <script type="text/javascript">app.initialize();</script> -->
+    </body>
+</html>
